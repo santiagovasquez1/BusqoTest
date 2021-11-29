@@ -1,0 +1,58 @@
+<div class="busqo-info-container">
+    <div class="busqo-title">
+        <h2>Detalle Cotizacion</h2>
+    </div>
+    <div class="busqo-content">
+        <form [formGroup]="detalleCotizacionForm" novalidate autocomplete="off">
+
+            <mat-form-field appearance="outline">
+                <mat-label>Cedula</mat-label>
+                <input matInput name="cedula" type="text" cdkFocusInitial placeholder="Ingrese la cedula del cliente" formControlName="cedula">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Nombre</mat-label>
+                <input matInput name="nombre" type="text" cdkFocusInitial placeholder="Ingrese el nombre del cliente" formControlName="nombre">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Apellidos</mat-label>
+                <input matInput name="nombre" type="text" cdkFocusInitial placeholder="Ingrese los apellidos del cliente" formControlName="apellido">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput name="email" type="text" cdkFocusInitial placeholder="Ingrese el email del cliente" formControlName="email">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Celular</mat-label>
+                <input matInput name="celular" type="text" cdkFocusInitial placeholder="Ingrese el celular del cliente" formControlName="celular">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Placa</mat-label>
+                <input matInput name="placa" type="text" cdkFocusInitial placeholder="Ingrese la placa del vehiculo" formControlName="placa">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Producto</mat-label>
+                <input matInput name="producto" type="text" cdkFocusInitial placeholder="Ingrese el producto del vehiculo" formControlName="producto">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Proveedor</mat-label>
+                <input matInput name="proveedor" type="text" cdkFocusInitial placeholder="Ingrese el proveedor del vehiculo" formControlName="proveedor">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Valor Cotizacion</mat-label>
+                <input matInput name="valor_Cotizacion" type="text" cdkFocusInitial placeholder="Ingrese el valor de la cotizacion del vehiculo" formControlName="valor_Cotizacion">
+            </mat-form-field>
+
+            <div class="busqo-action-container">
+                <button mat-raised-button color="primary" (click)="aceptar()">Cerrar</button>
+            </div>
+        </form>
+    </div>
+</div>

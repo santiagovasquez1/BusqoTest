@@ -10,6 +10,7 @@ import { ConsultarCotizacionesComponent } from './consultar-cotizaciones/consult
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { DetalleCotizacionComponent } from './detalle-cotizacion/detalle-cotizacion.component';
 
 
 
@@ -18,7 +19,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     PagesComponent,
     HomeComponent,
     GenerarCotizacionComponent,
-    ConsultarCotizacionesComponent
+    ConsultarCotizacionesComponent,
+    DetalleCotizacionComponent
   ],
   imports: [
     CommonModule,
@@ -33,7 +35,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
   exports: [
     PagesComponent,
     GenerarCotizacionComponent,
-    ConsultarCotizacionesComponent
+    ConsultarCotizacionesComponent,
+    DetalleCotizacionComponent
   ]
 })
 export class PagesModule { }

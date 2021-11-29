@@ -1,3 +1,4 @@
+import { DetalleCotizacionComponent } from './../detalle-cotizacion/detalle-cotizacion.component';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
@@ -63,7 +64,12 @@ export class ConsultarCotizacionesComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       this.getCotizaciones();
     });
-
   }
 
+  verDetalle(event: any) {
+    this.dialog.open(DetalleCotizacionComponent, {
+      width: '500px',
+      data: event
+    });
+  }
 }
