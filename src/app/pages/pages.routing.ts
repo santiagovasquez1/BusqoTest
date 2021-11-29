@@ -1,3 +1,4 @@
+import { ConsultarCotizacionesComponent } from './consultar-cotizaciones/consultar-cotizaciones.component';
 import { HomeComponent } from './home/home.component';
 import { PagesComponent } from './pages.component';
 import { NgModule } from '@angular/core';
@@ -13,6 +14,12 @@ const routes: Routes = [
                 component: HomeComponent,
                 data: {
                     title: "Home"
+                }
+            },{
+                path:"consultarCotizaciones",
+                component:ConsultarCotizacionesComponent,
+                data:{
+                    title:"Consultar Cotizaciones"
                 }
             }
         ]
