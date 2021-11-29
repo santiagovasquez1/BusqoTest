@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PagesComponent } from './pages/pages.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { PagesComponent } from './pages/pages.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
-    PagesModule
+    PagesModule,
+    NgxSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

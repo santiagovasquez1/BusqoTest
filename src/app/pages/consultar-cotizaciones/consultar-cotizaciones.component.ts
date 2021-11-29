@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { Cotizacion } from 'src/app/models/cotizacion.model';
 import { BusqoService } from 'src/app/services/busqo.service';
@@ -31,7 +32,8 @@ export class ConsultarCotizacionesComponent implements OnInit {
 
   constructor(private busqoService: BusqoService,
     private toastr: ToastrService,
-    public dialog: MatDialog) {
+    public dialog: MatDialog,
+    private spinner: NgxSpinnerService) {
     this.cotizaciones = new MatTableDataSource<Cotizacion>();
   }
 
@@ -40,13 +42,16 @@ export class ConsultarCotizacionesComponent implements OnInit {
   }
 
   getCotizaciones() {
+    this.spinner.show();
     this.busqoService.getCotizaciones().subscribe(result => {
       this.toastr.success('Cotizaciones obtenidas correctamente');
       this.cotizaciones.data = result;
       this.mostrarTabla = true;
+      this.spinner.hide();
     }, error => {
       this.mostrarTabla = false;
       this.toastr.error('Error al obtener las cotizaciones', 'Error');
+      this.spinner.hide();
     });
   }
 

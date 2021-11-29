@@ -7,6 +7,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-generar-cotizacion',
@@ -23,14 +24,15 @@ export class GenerarCotizacionComponent implements OnInit {
     'cedula',
     'producto',
     'proveedor',
-    'valorCotizacion'
+    'valor_Cotizacion'
   ];
 
   constructor(private busqoService: BusqoService,
     private toastr: ToastrService,
     public dialogRef: MatDialogRef<GenerarCotizacionComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private fb: FormBuilder) {
+    private fb: FormBuilder,
+    private spinner: NgxSpinnerService) {
     this.crearCotizacionForm = new FormGroup({});
   }
 
@@ -61,6 +63,7 @@ export class GenerarCotizacionComponent implements OnInit {
   findCliente(event: any) {
 
     if (!this.crearCotizacionForm.controls['cedula'].pristine) {
+      this.spinner.show();
       this.busqoService.getClienteByCedula(event.target.value).subscribe(result => {
         this.toastr.success('Cliente encontrado');
         this.crearCotizacionForm.patchValue({
@@ -71,16 +74,13 @@ export class GenerarCotizacionComponent implements OnInit {
           placa: result.placa
         });
 
-
-
         for (let field in this.crearCotizacionForm.controls) {
           let index = this.enabledFields.indexOf(field);
           if (index < 0 && !this.crearCotizacionForm.controls[field].disabled) {
             this.crearCotizacionForm.controls[field].disable();
           }
         }
-
-
+        this.spinner.hide();
       }, error => {
         this.toastr.error('Cliente no encontrado', 'Error');
         for (let field in this.crearCotizacionForm.controls) {
@@ -89,6 +89,7 @@ export class GenerarCotizacionComponent implements OnInit {
             this.crearCotizacionForm.controls[field].enable();
           }
         }
+        this.spinner.hide();
       })
     }
   }
@@ -134,11 +135,13 @@ export class GenerarCotizacionComponent implements OnInit {
       valorCotizacion: cotizacion.valor_Cotizacion
     }
 
-
+    this.spinner.show();
     this.busqoService.addCotizacion(cotizacionInfo).subscribe(result => {
+      this.spinner.hide();
       this.toastr.success('Cotizacion generada');
       this.dialogRef.close();
     }, error => {
+      this.spinner.hide();
       this.toastr.error('Error al generar cotizacion', 'Error');
       this.dialogRef.close();
     })

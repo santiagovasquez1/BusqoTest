@@ -9,6 +9,7 @@ import { GenerarCotizacionComponent } from './generar-cotizacion/generar-cotizac
 import { ConsultarCotizacionesComponent } from './consultar-cotizaciones/consultar-cotizaciones.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 
@@ -26,6 +27,7 @@ import { ToastrModule } from 'ngx-toastr';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgxSpinnerModule,
     ToastrModule.forRoot()
   ],
   exports: [
